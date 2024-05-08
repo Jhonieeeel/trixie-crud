@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('reviews');
             $table->integer('price');
             $table->string('image');
-            $table->enum('state', ['luzon', 'visayas', 'mindanao']);
             $table->timestamps();
         });
     }

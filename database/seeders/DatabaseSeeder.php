@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'reviews' => 320,
                 'price' => 4468,
                 'image' => 'storage/hotel-1.png',
-                'state' => 'luzon',
+                 
             ],
             [
                 'hotel_name' => 'Hennan, Crystal land',
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
                 'reviews' => 1942,
                 'price' => 5262,
                 'image' => 'storage/hotel-2.png',
-                'state' => 'luzon',
+                 
 
             ],
             [
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
                 'reviews' => 43,
                 'price' => 4455,
                 'image' => 'storage/hotel-3.png',
-                'state' => 'Mindanao',
+                
 
             ],
         ];
@@ -57,8 +57,16 @@ class DatabaseSeeder extends Seeder
                 'reviews' => $hotel_data['reviews'],
                 'price' => $hotel_data['price'],
                 'image' => $hotel_data['image'],
-                'state' => $hotel_data['state'],
+                
             ]);
         }
+
+        User::create([
+            'firstname' => 'test',
+            'lastname' => 'test',
+            'address' => 'test',
+            'email' => 'test@gmail.com',
+            'password' => 'potanginamo'
+        ]);
     }
 }

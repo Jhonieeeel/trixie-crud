@@ -7,7 +7,9 @@
 
                 {{-- search bar --}}
                 <form action={{ route('dashboard') }} method="GET" class="flex items-center gap-x-3">
-                    <input type="text" name="search" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="search">
+                    <input type="text" name="search"
+                        class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                        placeholder="search">
                     <button type="submit" class="rounded-md px-3 py-1 bg-blue-500 text-white text-sm">Search</button>
                 </form>
             </div>
@@ -116,7 +118,7 @@
                                     </svg>
                                 </button>
                             </form>
-                            <button  data-hs-overlay="#hotel-modal-{{ $hotel->id }}"  
+                            <button data-hs-overlay="#hotel-modal-{{ $hotel->id }}"
                                 class="bg-blue-700 hover:bg-blue-900 text-gray-200 px-3 py-2 rounded-md">Tour
                                 now</button>
                         </div>
@@ -125,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div id="hotel-modal-{{ $hotel->id }}"  
+        <div id="hotel-modal-{{ $hotel->id }}"
             class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none">
             <div
                 class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
@@ -137,20 +139,20 @@
                         </h3>
                         <button type="button"
                             class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
-                            data-hs-overlay="#hotel-modal-{{ $hotel->id }}"  data-hs-overlay-close="">
+                            data-hs-overlay="#hotel-modal-{{ $hotel->id }}" data-hs-overlay-close="">
                             <span class="sr-only">Close</span>
                             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 6 6 18"></path>
                                 <path d="m6 6 12 12"></path>
                             </svg>
                         </button>
                     </div>
-                    <div class="p-4 overflow-y-auto">    
+                    <div class="p-4 overflow-y-auto">
 
                         <h5 class="text-lg">Available Ports/Terminals</h5>
-                        <div class="mt-5 grid grid-cols-2 gap-6">  
+                        <div class="mt-5 grid grid-cols-2 gap-6">
                             <div>
                                 <h5 class="text-sm">From Luzon</h5>
                                 <ul class="list-disc list-inside text-gray-800 text-sm">
@@ -187,7 +189,7 @@
             </div>
         </div>
     @endforeach
-   
+
 
 
     {{-- HOTELS --}}
@@ -199,7 +201,7 @@
                 <li><a href="#">Hotel Booking Guarantee</a></li>
                 <li><a href="#">Hotel Stay Guarantee</a></li>
             </ul>
-            
+
             <ul class="flex items-center gap-x-6 text-lg mt-6 mb-6">
                 <li class=""><a href="">Luzon</a></li>
                 <li class=""><a href="">Visayas</a></li>
@@ -228,9 +230,7 @@
                     </div>
                 @endforeach
 
-                <div  
-                     
-                    class="bg-no-repeat bg-cover max-w-sm h-auto flex flex-col justify-end bg-white border rounded-xl shadow-xl shadow-gray-400"
+                <div class="bg-no-repeat bg-cover max-w-sm h-auto flex flex-col justify-end bg-white border rounded-xl shadow-xl shadow-gray-400"
                     style="background-image:  url('storage/discover-1.png')  ">
 
                     <div class="p-4 md:p-5 text-gray-200">

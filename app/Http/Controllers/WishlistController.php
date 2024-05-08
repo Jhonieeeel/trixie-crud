@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class WishlistController extends Controller
 {
     
 
     public function index()
     {
-        $wishlistItems = Wishlist::with('hotel')->get();
+        $user = Auth::user();
+        $wishlistItems = Wishlist::with('hotel')->where('user_id', $user->id)->get();
+        // $wishlistItems = Wishlist::with('hotel')->get();
+
         $count = $wishlistItems->count();
 
         return view('wishlist', compact('wishlistItems', 'count'));
@@ -32,9 +35,12 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
-     
+
+        $user = Auth::user();
+
         Wishlist::create([
-            'hotel_id' => $request->input('hotel_id')
+            'hotel_id' => $request->input('hotel_id'),
+            'user_id' =>  $user->id
         ]);
 
         return redirect('/wishlist');  

@@ -22,8 +22,9 @@ class DashboardController extends Controller
         }
     
         $hotels = $hotels->get();
-        $wishlistItems = Wishlist::all(); 
+        
         $user = Auth::user();
+        $wishlistItems = Wishlist::where('user_id', $user->id)->get(); 
         
         return view('dashboard', compact('hotels', 'wishlistItems', 'user'));
     }

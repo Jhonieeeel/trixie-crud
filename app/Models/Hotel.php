@@ -15,10 +15,9 @@ class Hotel extends Model
         'reviews',
         'price',
         'image',
-        'state'
     ];
 
-    public function mywishlist() {
+    public function wishlist() {
         return $this->hasMany(Wishlist::class);
     }
 

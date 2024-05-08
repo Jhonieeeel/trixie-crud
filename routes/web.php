@@ -26,13 +26,14 @@ Route::middleware('auth')->group( function () {
     // patch
     Route::patch('/dashboard', [DashboardController::class, 'update'])->name('dashboard.update');
     // store
-    
+    Route::post('/dashboard', [WishlistController::class, 'store'])->name('wishlist.store');
+
 });
 
 
 // wishlist
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware(['auth', 'verified'])->name('wishlist');
-Route::post('/dashboard', [WishlistController::class, 'store'])->middleware(['auth', 'verified'])->name('wishlist.store');
+
 Route::delete('/wishlist/{wishlist}', [WishlistController::class, 'destroy'])->middleware(['auth', 'verified'])->name('wishlist.destroy');
 
 // profile
