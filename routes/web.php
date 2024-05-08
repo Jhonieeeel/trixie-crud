@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DivingController;
+use App\Http\Controllers\FestivalsController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\MythsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -10,11 +14,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-Route::patch('/dashboard', [DashboardController::class, 'update'])->middleware(['auth', 'verified'])->name('dashboard.update');
+ 
+Route::middleware('auth')->group( function () {
+    // get
+    Route::get('/dashboard', [DashboardController::class, 'index']) ->name('dashboard');
+    Route::get('/hotels', [HotelController::class, 'index'])->name('hotels-dashboard');
+    Route::get('/diving', [DivingController::class, 'index'])->name('diving-dashboard');
+    Route::get('/festivals', [FestivalsController::class, 'index'])->name('festivals-dashboard');
+    Route::get('/myths', [MythsController::class, 'index'])->name('myths-dashboard');
+    Route::get('/business', [BusinessController::class, 'index'])->name('business-dashboard');
+    // patch
+    Route::patch('/dashboard', [DashboardController::class, 'update'])->name('dashboard.update');
+    // store
+    
+});
 
 
 // wishlist

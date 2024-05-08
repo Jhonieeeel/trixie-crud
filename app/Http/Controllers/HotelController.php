@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -12,7 +13,10 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+
+        $wishlistItems = Wishlist::all(); 
+
+        return view('pages.hotels', compact('wishlistItems'));
     }
 
     /**

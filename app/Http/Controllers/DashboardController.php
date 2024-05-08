@@ -13,11 +13,18 @@ use Illuminate\Support\Facades\Redirect;
 class DashboardController extends Controller
 {
     public function index() {
-        $hotels = Hotel::all();
-        $wishlistItems = Wishlist::all(); 
 
+        $hotels = Hotel::query();
+
+        if (request()->has('search')) {
+            $searchTerm = request()->get('search', '');
+            $hotels->where('hotel_name', 'like', '%' . $searchTerm . '%');
+        }
+    
+        $hotels = $hotels->get();
+        $wishlistItems = Wishlist::all(); 
         $user = Auth::user();
-        // dd($user);
+        
         return view('dashboard', compact('hotels', 'wishlistItems', 'user'));
     }
 

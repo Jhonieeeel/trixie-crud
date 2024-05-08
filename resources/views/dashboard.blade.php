@@ -2,7 +2,15 @@
     <section style="background-image: url('storage/background-1.svg')" class="h-screen w-full bg-cover bg-no-repeat px-8">
         {{-- navbar --}}
         <div class="flex justify-between items-center px-6 py-4">
-            <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Star </a>
+            <div class="flex items-center gap-x-8">
+                <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Star </a>
+
+                {{-- search bar --}}
+                <form action={{ route('dashboard') }} method="GET" class="flex items-center gap-x-3">
+                    <input type="text" name="search" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="search">
+                    <button type="submit" class="rounded-md px-3 py-1 bg-blue-500 text-white text-sm">Search</button>
+                </form>
+            </div>
             <div class="nav-links flex ">
 
                 <ul class="flex items-center mx-3 text-md text-white px-3 gap-x-10 font-lg font-semibold">
@@ -41,12 +49,12 @@
         <div class="center-links w-full mt-44">
             <img class="mx-auto" class="w-44 h-44" src={{ url('storage/ytsh.svg') }} alt="">
             <ul class="flex justify-center my-6 text-white font-semibold text-lg items-center gap-x-10">
-                <li>Home</li>
-                <li>Hotels</li>
-                <li>Diving and Dive Sites</li>
-                <li>Festivals and Fiestas</li>
-                <li>Myths and Folktores</li>
-                <li>Home Business</li>
+                <li><a href={{ route('dashboard') }}>Home</a></li>
+                <li><a href={{ route('hotels-dashboard') }}>Hotels</a></li>
+                <li><a href="#">Diving and Dive Sites</a></li>
+                <li><a href="#">Festivals and Fiestas</a></li>
+                <li><a href="#">Myths and Folktores</a></li>
+                <li><a href="#">Home Business</a></li>
             </ul>
         </div>
 
@@ -66,9 +74,7 @@
         </div>
     </section>
 
-    {{-- hotel modals --}}
-
-    {{-- 1 --}}
+    {{-- Modal for Hotels --}}
     @foreach ($hotels as $hotel)
         <div id="hotel-{{ $hotel->id }}"
             class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-0 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
@@ -78,7 +84,7 @@
                         <span></span>
                         <button type="button"
                             class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
-                            data-hs-overlay="#hs-basic-modal">
+                            data-hs-overlay="#hotel-{{ $hotel->id }}">
                             <span class="sr-only">Close</span>
                             <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -90,7 +96,7 @@
                     </div>
                     <div class="p-4 overflow-y-auto ">
                         <img class="w-full h-auto rounded-md mb-9" src={{ url($hotel->image) }} alt="">
-                        <h3 class="text-md font-semibold font-sans">{{ $hotel->hotel_name }}</h3>
+                        <h3 class="text-md font-semibold font-san">{{ ucwords($hotel->hotel_name) }}</h3>
                         <p class="mt-1 text-gray-800">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quod
                             reprehenderit adipisci natus officiis delectus tempore velit rerum porro, totam, optio vitae
@@ -125,7 +131,7 @@
                 class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
                 <div class="flex flex-col bg-white border shadow-sm rounded-xl pointer-events-auto ">
                     <div class="flex justify-between items-center py-3 px-4 border-b ">
-                        <h1 class="text-lg font-bold">{{ $hotel->hotel_name }}</h1>
+                        <h1 class="text-lg font-bold capitalize">{{ $hotel->hotel_name }}</h1>
                         <h3 class="font-semibold text-gray-800">
                             Available Transportation
                         </h3>
@@ -181,7 +187,7 @@
             </div>
         </div>
     @endforeach
-    {{-- 2 --}}
+   
 
 
     {{-- HOTELS --}}
@@ -193,40 +199,11 @@
                 <li><a href="#">Hotel Booking Guarantee</a></li>
                 <li><a href="#">Hotel Stay Guarantee</a></li>
             </ul>
-            {{-- @if (is_null($user->state)) --}}
-            <h3 class="text-md text-gray-700">Current Location: <span
-                    class="font-semibold capitalize">{{ $user->state ?? 'Not updated' }}</span></h3>
-            <form method="post" action="{{ route('dashboard.update') }}" class="mt-6 space-y-3">
-                @csrf
-                @method('patch')
-
-                <select name="state" id="state" class="px-2 py-1">
-                    <option value="luzon" {{ $user->state === 'luzon' ? 'selected' : '' }}>Luzon</option>
-                    <option value="visayas" {{ $user->state === 'visayas' ? 'selected' : '' }}>Visayas</option>
-                    <option value="mindanao" {{ $user->state === 'mindanao' ? 'selected' : '' }}>Mindanao</option>
-                </select>
-                <button class="text-xs px-2 py-1" type="submit">Save</button>
-            </form>
-            {{-- @endif --}}
+            
             <ul class="flex items-center gap-x-6 text-lg mt-6 mb-6">
-                @if ($user->state === 'luzon')
-                    <li class="bg-blue-700 text-md rounded-md text-white px-2 py-1"><a href="">Luzon</a></li>
-                    <li class=""><a href="">Visayas</a></li>
-                    <li class=""><a href="">Mindanao</a></li>
-                @elseif ($user->state === 'visayas')
-                    <li class=""><a href="">Luzon</a></li>
-                    <li class="bg-blue-700 text-md rounded-md text-white px-2 py-1"><a href="">Visayas</a></li>
-                    <li class=""><a href="">Mindanao</a></li>
-                @elseif ($user->state === 'mindanao')
-                    <li class=""><a href="">Luzon</a></li>
-                    <li class=""><a href="">Visayas</a></li>
-                    <li class="bg-blue-700 text-md rounded-md text-white px-2 py-1"><a href="">Mindanao</a>
-                    </li>
-                @else
-                    <li class=""><a href="">Luzon</a></li>
-                    <li class=""><a href="">Visayas</a></li>
-                    <li class=""><a href="">Mindanao</a></li>
-                @endif
+                <li class=""><a href="">Luzon</a></li>
+                <li class=""><a href="">Visayas</a></li>
+                <li class=""><a href="">Mindanao</a></li>
             </ul>
 
             {{-- cards --}}
@@ -251,7 +228,8 @@
                     </div>
                 @endforeach
 
-                <a href="#"
+                <div  
+                     
                     class="bg-no-repeat bg-cover max-w-sm h-auto flex flex-col justify-end bg-white border rounded-xl shadow-xl shadow-gray-400"
                     style="background-image:  url('storage/discover-1.png')  ">
 
@@ -261,7 +239,7 @@
                         </p>
                         <button class="bg-blue-700 mx-1 w-full">Go Now</button>
                     </div>
-                </a>
+                </div>
 
             </div>
         </div>
