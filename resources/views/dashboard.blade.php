@@ -3,7 +3,7 @@
         {{-- navbar --}}
         <div class="flex justify-between items-center px-6 py-4">
             <div class="flex items-center gap-x-8">
-                <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Star </a>
+                <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Insider </a>
 
                 {{-- search bar --}}
                 <form action={{ route('dashboard') }} method="GET" class="flex items-center gap-x-3">
@@ -100,9 +100,9 @@
                         <img class="w-full h-auto rounded-md mb-9" src={{ url($hotel->image) }} alt="">
                         <h3 class="text-md font-semibold font-san">{{ ucwords($hotel->hotel_name) }}</h3>
                         <p class="mt-1 text-gray-800">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos quod
-                            reprehenderit adipisci natus officiis delectus tempore velit rerum porro, totam, optio vitae
-                            consequatur? Ullam.
+                        This Hotel stands as an icon of luxury and elegance within the bustling metropolis. Nestled amidst lush tropical gardens and offering breathtaking views of the city skyline and Manila Bay, this renowned hotel embodies a sanctuary of tranquility amidst the urban hustle. Boasting a harmonious blend of contemporary sophistication and timeless charm, each corner of Shangri-La Manila exudes opulence and refinement. From its meticulously designed rooms and suites adorned with plush furnishings and modern amenities to its world-class dining venues serving exquisite cuisine from around the globe, every aspect of the hotel promises an unparalleled experience in hospitality. Guests are invited to indulge in rejuvenating spa treatments, take a dip in the expansive swimming pool, or simply unwind in the serene ambiance of the landscaped gardens, offering an escape from the city's frenetic energy.
+
+Beyond its lavish accommodations and impeccable service, it is also renowned for its commitment to sustainability and community engagement. With initiatives aimed at environmental conservation and social responsibility, the hotel strives to make a positive impact on both the local community and the planet. Through partnerships with local artisans and support for cultural preservation projects, it celebrates the rich heritage and vibrant spirit of the Philippines. Whether hosting grand events in its state-of-the-art facilities or providing a haven of luxury for discerning travelers, this continues to set the standard for excellence in hospitality, embodying the epitome of luxury living in the heart of Manila.
                         </p>
                         <div class="flex items-center justify-end gap-x-5">
                             <form action="{{ route('wishlist.store') }}" method="post">

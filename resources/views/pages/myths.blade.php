@@ -3,7 +3,7 @@
         {{-- navbar --}}
         <div class="flex justify-between items-center px-6 py-4">
             <div class="flex items-center gap-x-8">
-                <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Star </a>
+                <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Insider </a>
                 <form action={{ route('dashboard') }} method="GET" class="flex items-center gap-x-3">
                     <input type="text" name="search" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="search">
                     <button type="submit" class="rounded-md px-3 py-1 bg-blue-500 text-white text-sm">Search</button>
@@ -47,8 +47,8 @@
         <div class="center-links w-full mt-44">
             <img class="mx-auto" class="w-44 h-44" src={{ url('storage/ytsh.svg') }} alt="">
             <ul class="flex justify-center my-6 text-white font-semibold text-lg items-center gap-x-10">
-                <li><a href={{ route('hotels-dashboard')}}>Home</a></li>
-                <li><a href={{ route('hotels-dashboard')}}>Hotels</a></li>
+                <li><a href={{ route('dashboard')}}>Home</a></li>
+                <li><a href={{ route('dashboard')}}>Hotels</a></li>
                 <li><a href={{ route('diving-dashboard')}}>Diving and Dive Sites</a></li>
                 <li><a href={{ route('festivals-dashboard')}}>Festivals and Fiestas</a></li>
                 <li><a href={{ route('myths-dashboard')}}>Myths and Folktores</a></li>
@@ -61,13 +61,13 @@
         <div class="grid grid-cols-3 gap-5">
             {{-- card carousel here --}}
             <div class="max-w-md">
-                <img src={{ url('storage/img-1.png') }} alt="" class="rounded-lg w-full object-cover">
+                <img src={{ url('storage/myth1.png') }} alt="" class="rounded-lg w-full object-cover">
             </div>
             <div class="max-w-md">
-                <img src={{ url('storage/img-2.png') }} alt="" class="rounded-lg w-full object-cover">
+                <img src={{ url('storage/myth2.png') }} alt="" class="rounded-lg w-full object-cover">
             </div>
             <div class="max-w-md">
-                <img src={{ url('storage/img-3.png') }} alt="" class="rounded-lg w-full object-cover">
+                <img src={{ url('storage/myth3.png') }} alt="" class="rounded-lg w-full object-cover">
             </div>
         </div>
     </section>

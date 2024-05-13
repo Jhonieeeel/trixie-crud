@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Rules\AlphaSpace;
+
 
 class RegisteredUserController extends Controller
 {
@@ -30,10 +32,10 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'firstname' => ['required', 'string', 'max:255',new AlphaSpace],
+            'lastname' => ['required', 'string', 'max:255',new AlphaSpace],
+            'address' => ['required', 'string', 'max:255',new AlphaSpace],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class,'ends_with:@gmail.com'], 
             'state' => ['nullable', 'in:luzon,visayas,mindanao'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);

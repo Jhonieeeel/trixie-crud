@@ -25,13 +25,19 @@
             <div class="max-w-md">
                 <label for="firstname" class="block text-sm font-medium mb-2 ">First Name</label>
                 <input type="text" id="firstname" name="firstname" required class="py-3 px-4 block w-full border-red-700 rounded-lg text-sm focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Trixie">
+                @error('first_name')
+                <div class="error-message">{{ $message }}</div>
+                @enderror
                 <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
                 
             </div>
             {{-- lastname --}}
             <div class="max-w-md">
                 <label for="lastname" class="block text-sm font-medium mb-2 ">Last Name</label>
-                <input type="text" id="lastname" name="lastname" required class="py-3 px-4 block w-full border-gray-700 rounded-lg text-sm focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Palautog">
+                <input type="text" id="lastname" name="lastname" required class="py-3 px-4 block w-full border-gray-700 rounded-lg text-sm focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Maylid">
+                @error('last_name')
+                <div class="error-message">{{ $message }}</div>
+                 @enderror
                 <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
                 
             </div>
@@ -39,6 +45,7 @@
             <div class="max-w-md">
                 <label for="address" class="block text-sm font-medium mb-2 ">Country/Province</label>
                 <input type="text" id="address" name="address" required class="py-3 px-4 block w-full border-gray-700 rounded-lg text-sm focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Philippines">
+                
                 <x-input-error :messages="$errors->get('address')" class="mt-2" />
 
             </div>

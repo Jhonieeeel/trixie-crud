@@ -2,7 +2,7 @@
     <section style="background-image: url('storage/background-1.svg')" class="h-screen w-full bg-cover bg-no-repeat px-8">
         {{-- navbar --}}
         <div class="flex justify-between items-center px-6 py-4">
-            <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Star </a>
+            <a href={{ route('dashboard') }} class="text-3xl text-white font-bold">Philippine Insider </a>
             <div class="nav-links flex ">
 
                 <ul class="flex items-center mx-3 text-md text-white px-3 gap-x-10 font-lg font-semibold">
